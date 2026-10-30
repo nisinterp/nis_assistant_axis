@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Experiment A: does recovery after a block of k trigger turns depend on k?
+"""Main experiment: does recovery after a block of k trigger turns depend on k?
 
 All gaps are within seed: trigger condition `{family}_k{k}` minus `control_k{k}` at the same
 turn (same k, so same turn positions and the same number of turns of history).
@@ -16,7 +16,7 @@ after it). CIs are bootstrap over seeds.
 Writes report.md and results.json into the run directory. Standard library only.
 
 Usage:
-    python experiment/analyze.py results/experiment_a/expA
+    python experiment/analyze.py results/main_experiment
 """
 
 import json
@@ -91,7 +91,7 @@ def main():
     probe_points = list(dict.fromkeys(json.loads((run / "config.json").read_text()).get("probe_points", [])))
     results = {"run": str(run), "seeds": seeds, "families": families, "doses": doses, "per_condition": {}}
 
-    out = [f"# Experiment A — recovery after k trigger turns (`{run}`)", "",
+    out = [f"# Main experiment — recovery after k trigger turns (`{run}`)", "",
            f"{len(seeds)} seeds. Gap = `family_kK` − `control_kK` at the same turn, within seed; "
            "mean [95% bootstrap CI over seeds] (seeds below 0). `rel` = turns after the end of the block.", ""]
 

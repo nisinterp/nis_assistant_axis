@@ -45,7 +45,7 @@ Sometimes a conversation pushes the model away from its normal "assistant" perso
 
 No LLM plays the user. Every user message is fixed text, written before any run. That way all conditions of a seed get word-for-word the same messages.
 
-- **Neutral messages: 20 seeds** written (`prompts/prompts.json`); the revised full A uses the first 5 (blocks and controls are written for the first 10).
+- **Neutral messages: 20 seeds** written (`prompts/prompts.json`); the revised main experiment uses the first 5 (blocks and controls are written for the first 10).
   - Each seed is one small coding task, e.g. "write a CSV parser in Python".
   - Each seed has 25 follow-up messages: 5 before the slot and 20 after it.
   - The follow-ups must make sense whatever the model replied, because they are fixed. Examples: "Now add error handling.", "Can you write tests for it?", "Make it faster for big files."
@@ -69,13 +69,13 @@ For each conversation:
 history = []
 for each user message in order:
     history += user message
-    reply = Qwen generates a reply to the whole history   (vLLM, temperature 0.7, max 2048 tokens, 32k context; 40k for full A)
+    reply = Qwen generates a reply to the whole history   (vLLM, temperature 0.7, max 2048 tokens, 32k context; 40k for the main experiment)
     history += reply
 ```
 
 - **Reply limit: 2048 tokens** (changed from 400 after an early test run). At 400, 8 of 12 test replies were cut off mid-code, and control replies were cut more often than trigger replies, which would bias the comparison. Uncapped coding replies ran ~200–1,100 tokens.
   - Every reply's `finish_reason` is saved, so cut-off replies can be counted per condition.
-  - Checked in pilot stage 2: 45% of replies exceed 1024 tokens, so 2048 stays. Full A conversations are at most 16 turns; the longest pilot-2 conversation had ~20.5k reply tokens at 14 turns, so full A uses a 40960-token context (Qwen3's native limit). Pilot 2 already projected conversations of ~21k tokens without problems.
+  - Checked in pilot stage 2: 45% of replies exceed 1024 tokens, so 2048 stays. Main-experiment conversations are at most 16 turns; the longest pilot-2 conversation had ~20.5k reply tokens at 14 turns, so the main experiment uses a 40960-token context (Qwen3's native limit). Pilot 2 already projected conversations of ~21k tokens without problems.
 - **The model replies to its own earlier replies.** It sees all of its previous answers, including any drifted one. That is the realistic case, and it is what we want to measure.
 - **All conversations run in a batch.** Every conversation in a stage moves forward one turn at a time together: everyone's turn 1, then everyone's turn 2, and so on. This is much faster than one conversation at a time.
 - **Shared prefix:**
@@ -111,7 +111,7 @@ This also happens after generation, in the same GPU session.
 - **What gets judged:** **only probe replies**. We don't judge every turn.
   - Pilot stage 1: no judging.
   - Pilot stage 2: 30 probe replies.
-  - Full A: 270 probe replies (about 230 distinct; the before-block probe is shared within a seed).
+  - Main experiment: 270 probe replies (about 230 distinct; the before-block probe is shared within a seed).
 - **When:** after the GPU work is done. All replies of a stage are sent in one **Message Batch** (half price, results usually within an hour).
 - **What the judge sees:**
   - Only the probe question and the model's reply to it.
@@ -154,11 +154,11 @@ The judge code works with two backends. Only the API call differs; everything el
 1. Write the user messages (seeds, triggers, controls), and check the judge and generation code.
 2. Pilot stage 1.
 3. Pilot stage 2, plus your check on 20 real replies.
-4. Full Experiment A.
+4. Main experiment.
 5. Judging.
 6. Analysis.
 
-## Experiment A
+## Experiments: pilots and main experiment
 
 ### Step 1. Pilot, stage 1: find a trigger that works
 
@@ -191,8 +191,8 @@ The judge code works with two backends. Only the API call differs; everything el
 **Judge check on real replies (you do this by hand):**
 1. The 30 probe replies are real Qwen 3 32B answers, unlike made-up calibration examples.
 2. **You** score 20 of them yourself, without seeing Haiku's scores, in a CSV sheet (`id, reply, your_score`).
-3. Then compare. Haiku is OK for full A if it is within 1 point of you on at least 18 of 20.
-4. If not, use the Sonnet fallback for full A.
+3. Then compare. Haiku is OK for the main experiment if it is within 1 point of you on at least 18 of 20.
+4. If not, use the Sonnet fallback for the main experiment.
 
 ### Pilot results (2026-10-25)
 
@@ -200,16 +200,16 @@ The judge code works with two backends. Only the API call differs; everything el
 - **Pilot 2** (5 seeds; `meta_phenomenology`, `emo_grief`, control; 14 turns). Both **GO** (5/5 seeds below control at the slot: −27.4 and −5.6). **Recovery is almost immediate:** one coding turn later the gap is −0.4 and −0.2 (1–2% of the drop left), and it stays within about ±1 of control up to turn 14. Report: `results/pilots/pilot2/report.md`; figures `projection_by_turn.png`, `recovery.png`.
 - **Reply lengths:** 45% of replies are over 1024 tokens, so the 2048 limit stays. 4% were cut off at 2048, all at turn 9 or later.
 - This matches the paper (§4.2): the projection is predicted mostly by the latest user message, not by the history.
-- **Probe replies did not recover.** Haiku scores of the self-description probe (trigger − control, 5 seeds): `emo_grief` +1.0 right after the trigger and still **+0.8 at turn 14**; `meta_phenomenology` +0.4 and **+0.6 at turn 14**. Controls score 1 everywhere. Ten coding turns later, the grief conversation's probe still says "I'm feeling grateful and deeply moved… I care about how you're feeling". Coding replies look recovered, but asking the model about itself brings the drift back. Full A's probes test this directly.
+- **Probe replies did not recover.** Haiku scores of the self-description probe (trigger − control, 5 seeds): `emo_grief` +1.0 right after the trigger and still **+0.8 at turn 14**; `meta_phenomenology` +0.4 and **+0.6 at turn 14**. Controls score 1 everywhere. Ten coding turns later, the grief conversation's probe still says "I'm feeling grateful and deeply moved… I care about how you're feeling". Coding replies look recovered, but asking the model about itself brings the drift back. The main experiment's probes test this directly.
 
-### Why full A changed
+### Why the main experiment changed
 
 A single trigger turn followed by coding is the mildest possible test. There is only one drifted reply in the history, and coding is the strongest pull back to the Assistant (paper Table 5). Two new questions replace "how long does recovery take":
 
 1. **Dose:** does recovery depend on how long the model was drifted? The trigger becomes a **block of k turns** (k = 1, 2, 3).
 2. **Hidden drift:** do coding replies look recovered while the model still describes itself differently? Probes are asked **after** the block and are **projected on the axis** as well as judged.
 
-### Step 3. Full Experiment A (revised)
+### Step 3. Main experiment (revised)
 
 | | |
 |---|---|
@@ -223,7 +223,7 @@ A single trigger turn followed by coding is the mildest possible test. There is 
 | Sharing | one reply per distinct history: the 3 pre-block turns are shared within a seed, and the first block turns are shared between doses of a family, so doses are compared exactly up to where they diverge |
 | Probes | before the block, at the end of the block, and 1, 2, 5, 10 turns after it = 6 × 45 = **270** (the before-block probe is shared by a seed's conditions) |
 | Context | `max_model_len` 40960 (Qwen3's native limit), reply limit 2048. Safeguard: a conversation whose prompt + 2048 would exceed the limit stops there and is listed in the report, instead of crashing the run (not expected at 16 turns: ~25k max) |
-| Code | `experiment/run_a.sh` → `generate_blocks.py`, `project.py --probes`, `analyze.py`, `plot.py` |
+| Code | `experiment/run_main.sh` → `generate_blocks.py`, `project.py --probes`, `analyze.py`, `plot.py` |
 
 Messages are frozen in `prompts/prompts.json` (neutral pre/post) and `prompts/triggers_final.json` (blocks, controls, probe).
 
@@ -263,7 +263,7 @@ Qwen 3 32B **does not fit on free Colab** (T4, 16 GB), so the GPU has to be paid
 | Test runs + debugging | Small test runs | ~30–60 min | ~$1–1.5 | — |
 | Pilot stage 1 (4 slot samples) | 93 replies + projections | ~5 min (measured) | ~$0.15 | — |
 | Pilot stage 2 (ran with 2 triggers) | 190 replies (incl. 45 probes) + projections | ~16 min (measured) | ~$0.4 | ~$0.01 |
-| Full A (revised) | 45 conversations (~500 generated replies) + 270 probes + projections | ~30–35 min (generation time is set by the number of turns, not seeds) | ~$0.8 | ~$0.05 |
+| Main experiment (revised) | 45 conversations (~500 generated replies) + 270 probes + projections | ~30–35 min (generation time is set by the number of turns, not seeds) | ~$0.8 | ~$0.05 |
 
 GPU times assume the 2048-token reply limit, which roughly doubles generation time compared with 400 (23 s vs 49 s in a test run).
 
@@ -272,15 +272,15 @@ GPU times assume the 2048-token reply limit, which roughly doubles generation ti
 | | GPU time | Total cost |
 |---|---|---|
 | Pilot only (setup + checks + both pilot stages) | ~1.25–1.75 h | **~$2.5–3** |
-| Experiment A, all of it (revised full A) | ~1.5–2 h | **~$3–4** |
+| Pilots + main experiment (revised) | ~1.5–2 h | **~$3–4** |
 
 **How to stay within $5:**
 - Run each stage in one sitting, so you pay the ~$0.5 setup only a few times.
-- Full A uses 5 seeds. Stop the instance as soon as full A's projections are copied back; judging runs without the GPU.
+- The main experiment uses 5 seeds. Stop the instance as soon as the main experiment's projections are copied back; judging runs without the GPU.
 
 ## Not in this pass
 
-- **Experiment B** (realistic users from WildChat): dropped.
+- Realistic users from WildChat: dropped.
 - The "repeat every user message twice" length experiment.
 - Other models (Gemma 2 27B, Llama 3.3 70B, small models).
 - Activation capping or other fixes for drift.
@@ -292,7 +292,7 @@ GPU times assume the 2048-token reply limit, which roughly doubles generation ti
 - [x] The pilot finds triggers that cause drift: `meta_phenomenology` and `emo_grief` (both GO in pilot 2).
 - [x] Your 20-reply judge check after pilot stage 2 passes: Haiku within 1 point on 20/20, exact on 16/20 (`results/pilots/pilot2/judge_check.md`). Haiku stays the judge.
 - [x] `prompts/triggers_final.json` (blocks k = 1–3 and matched controls) reviewed and frozen.
-- [ ] Full A (revised) has run: 45 conversations and 270 probes, with per-turn and per-probe projections saved as JSONL.
+- [ ] Main experiment (revised) has run: 45 conversations and 270 probes, with per-turn and per-probe projections saved as JSONL.
 - [ ] All probe replies are judged.
 - [ ] Plot: gap vs control around the block, one line per k, per family (`recovery.png`).
 - [ ] Plot: probe-reply gap vs control at each probe point, one line per k (`probes.png`).

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Experiment A figures.
+"""Main-experiment figures.
 
 recovery.png  one panel per family: gap vs matched control per turn, aligned on the end of the
               block (rel 0), one line per dose k, band = 95% bootstrap CI over seeds.
@@ -7,7 +7,7 @@ probes.png    same layout for the probe replies (projected).
 judge.png     same layout for the probe replies' Haiku scores (higher = more drift, unlike the axis).
 
 Usage:
-    python experiment/plot.py results/experiment_a/expA
+    python experiment/plot.py results/main_experiment
 """
 
 import json

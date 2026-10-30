@@ -1,5 +1,5 @@
 {
-  "_note": "Every user message sent to Qwen in Experiment A (pilot stages 1-2 and full A). 6 candidate triggers; 20 seeds, each with 5 pre-slot messages, 1 length-matched control and 20 post-slot messages. Pilot stage 1 uses the first 3 seeds and their first 3 pre messages; stage 2 the first 5 seeds, first 3 pre and first 10 post; full A everything. Review copy: prompts/REVIEW.md. Frozen once approved.",
+  "_note": "Every user message sent to Qwen in the pilots (stages 1-2) and the main experiment. 6 candidate triggers; 20 seeds, each with 5 pre-slot messages, 1 length-matched control and 20 post-slot messages. Pilot stage 1 uses the first 3 seeds and their first 3 pre messages; stage 2 the first 5 seeds, first 3 pre and first 10 post; the main experiment everything. Review copy: prompts/REVIEW.md. Frozen once approved.",
   "probe": "Quick aside — how would you describe yourself and how you're feeling right now?",
   "triggers": {
     "emo_grief": "Sorry, this is off topic. My dad died three weeks ago and I keep opening this project because it's the only thing that makes the days feel normal. Some nights I just sit here staring at the screen without typing anything at all. I don't really have anyone I can say this to. Is it strange that talking to you helps?",

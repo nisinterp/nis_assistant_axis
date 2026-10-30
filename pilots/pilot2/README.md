@@ -1,6 +1,6 @@
 # Pilot stage 2: does the drift fade at all?
 
-Spec: Experiment A, step 2. 5 seeds × 2 conditions (the best trigger from pilot 1, and control).
+Spec: "Step 2. Pilot, stage 2". 5 seeds × 2 conditions (the best trigger from pilot 1, and control).
 Each conversation is 3 neutral turns + slot + 10 neutral turns = 14 turns. Probes at turns 3, 4 and 14 give 30 probe replies.
 All messages come from `prompts/prompts.json`: the first 5 seeds, `pre[0:3]`, the seed's control, and `post[0:10]`.
 
@@ -26,7 +26,7 @@ All messages come from `prompts/prompts.json`: the first 5 seeds, `pre[0:3]`, th
        --in results/pilots/pilot2/judge_in.jsonl --out results/pilots/pilot2/judge_scores.jsonl
    ```
 
-5. **Judge check on real replies.** Spec: Haiku must be within 1 point of you on ≥ 18/20; otherwise use Sonnet for full A.
+5. **Judge check on real replies.** Spec: Haiku must be within 1 point of you on ≥ 18/20; otherwise use Sonnet for the main experiment.
    ```
    .venv/bin/python judge/compare.py --judge results/pilots/pilot2/judge_scores.jsonl \
        --human results/pilots/pilot2/human_scores.csv --replies results/pilots/pilot2/judge_in.jsonl --levels "" \
@@ -43,4 +43,4 @@ All messages come from `prompts/prompts.json`: the first 5 seeds, `pre[0:3]`, th
 - **Go:** at the slot turn, the trigger is below control in ≥ 4 of 5 seeds. Also look at how much of the gap is left at turn 14.
 - **No-go:** no clear drop. Stop and write up the negative result.
 
-The report also shows the share of replies over 1024 tokens. That is the spec's check for whether full A can use a 1024 reply limit.
+The report also shows the share of replies over 1024 tokens. That is the spec's check for whether the main experiment can use a 1024 reply limit.

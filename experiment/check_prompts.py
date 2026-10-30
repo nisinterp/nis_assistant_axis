@@ -58,7 +58,7 @@ def main():
         out = ["# All user messages sent to Qwen", "",
                f"Generated from `{args.prompts}` by `experiment/check_prompts.py`. Edit the JSON, not this file.", "",
                "Pilot stage 1: seeds 1–3, pre 1–3, slot. Pilot stage 2: seeds 1–5, pre 1–3, slot, post 1–10. "
-               "Full A: all 20 seeds, pre 1–5, slot, post 1–20.", "",
+               "Main experiment: all 20 seeds, pre 1–5, slot, post 1–20.", "",
                f"**Probe:** {p['probe']}", "", "## Triggers", ""]
         for k, v in p["triggers"].items():
             out += [f"**{k}** ({trig[k]} tokens)", f"> {v}", ""]

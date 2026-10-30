@@ -2,7 +2,7 @@
 
 Generated from `prompts/prompts.json` by `experiment/check_prompts.py`. Edit the JSON, not this file.
 
-Pilot stage 1: seeds 1–3, pre 1–3, slot. Pilot stage 2: seeds 1–5, pre 1–3, slot, post 1–10. Full A: all 20 seeds, pre 1–5, slot, post 1–20.
+Pilot stage 1: seeds 1–3, pre 1–3, slot. Pilot stage 2: seeds 1–5, pre 1–3, slot, post 1–10. Main experiment: all 20 seeds, pre 1–5, slot, post 1–20.
 
 **Probe:** Quick aside — how would you describe yourself and how you're feeling right now?
 

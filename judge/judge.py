@@ -9,7 +9,7 @@ Usage:
     python judge/judge.py --judge-backend openrouter --model <id>:free \
         --in results/pilots/pilot2/judge_in.jsonl --out /tmp/scores_openrouter.jsonl
     python judge/judge.py --judge-backend anthropic --model claude-haiku-5-5 \
-        --in results/experiment_a/expA/judge_in.jsonl --out results/experiment_a/expA/judge_scores.jsonl
+        --in results/main_experiment/judge_in.jsonl --out results/main_experiment/judge_scores.jsonl
 """
 
 import argparse

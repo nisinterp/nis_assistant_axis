@@ -102,7 +102,7 @@ def main():
     control_slot = {s: slot[(s, "control")] for s in seeds}
     pre_slot = ({s: vals[(s, "control")][slot_turn - 1][0] for s in seeds} if slot_turn > 1 else {})
 
-    # Best per family: full A needs one emotional and one meta-reflection trigger.
+    # Best per family: the main experiment needs one emotional and one meta-reflection trigger.
     # "Consistent" = negative gap in every seed.
     best = {}
     for fam in ("emo", "meta"):

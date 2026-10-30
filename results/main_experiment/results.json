@@ -1,5 +1,5 @@
 {
-  "run": "results/experiment_a/expA",
+  "run": "results/main_experiment",
   "seeds": [
     "csv_parser",
     "log_summary",

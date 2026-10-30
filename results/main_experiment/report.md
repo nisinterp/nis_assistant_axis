@@ -1,4 +1,4 @@
-# Experiment A — recovery after k trigger turns (`results/experiment_a/expA`)
+# Main experiment — recovery after k trigger turns (`results/main_experiment`)
 
 5 seeds. Gap = `family_kK` − `control_kK` at the same turn, within seed; mean [95% bootstrap CI over seeds] (seeds below 0). `rel` = turns after the end of the block.
 

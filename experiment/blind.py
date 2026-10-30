@@ -12,7 +12,7 @@ Refuses to overwrite existing files, so your scores and the key are never lost.
 
 Usage:
     python experiment/blind.py results/pilots/pilot2 [--sheet-n 20] [--seed 0]
-    python experiment/blind.py results/experiment_a/expA --sheet-n 0     (full A: no hand sheet needed)
+    python experiment/blind.py results/main_experiment --sheet-n 0     (main experiment: no hand sheet needed)
 """
 
 import argparse

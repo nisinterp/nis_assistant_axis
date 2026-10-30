@@ -12,7 +12,7 @@ Projections (always):
 Judge scores (once judge/judge.py has written judge_scores.jsonl next to key.json):
   - mean probe score per condition and probe turn, and trigger - control per seed
 
-Reply lengths (for the 1024 vs 2048 decision before full A):
+Reply lengths (for the 1024 vs 2048 decision before the main experiment):
   - share of replies over 1024 tokens, cut-offs per condition, longest conversation
 
 Writes report.md and results.json into the run directory. Standard library only.
@@ -179,7 +179,7 @@ def main():
                 out.append(f"| `{trig}` | {j['turn']} | {fmt(j['trigger_mean'])} | {fmt(j['control_mean'])} | "
                            f"{fmt(j['mean_diff'])} | {j['trigger_scores']} | {j['control_scores']} |")
     out.append("")
-    out.append("## Reply lengths (for choosing 1024 vs 2048 before full A)")
+    out.append("## Reply lengths (for choosing 1024 vs 2048 before the main experiment)")
     out.append("")
     out.append(f"- Replies over 1024 tokens: {over_1024}/{len(all_replies)} "
                f"({over_1024 / len(all_replies):.1%}). Spec: under ~2% means 1024 is fine.")

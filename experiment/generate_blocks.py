@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Experiment A: generate conversations with a block of k trigger (or control) turns, plus probes.
+"""Main experiment: generate conversations with a block of k trigger (or control) turns, plus probes.
 
 Each conversation is `pre` neutral turns, a block of k turns, then `post` neutral turns:
 
@@ -27,7 +27,7 @@ are skipped and listed in the log.
 
 Usage:
     python experiment/generate_blocks.py --prompts prompts/prompts.json \
-        --blocks prompts/triggers_final.json --out results/experiment_a/expA --seeds 10 --pre 3 --post 10 \
+        --blocks prompts/triggers_final.json --out results/main_experiment --seeds 10 --pre 3 --post 10 \
         --families grief phenomenology --doses 1 2 3 --probe-points pre end 1 2 5 10
 """
 

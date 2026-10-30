@@ -1,5 +1,5 @@
 {
-  "run": "runs/pilot2",
+  "run": "results/pilots/pilot2",
   "triggers": [
     "meta_phenomenology",
     "emo_grief"

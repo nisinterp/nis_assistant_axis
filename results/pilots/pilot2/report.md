@@ -1,4 +1,4 @@
-# Pilot stage 2 — `meta_phenomenology`, `emo_grief` vs control (`runs/pilot2`)
+# Pilot stage 2 — `meta_phenomenology`, `emo_grief` vs control (`results/pilots/pilot2`)
 
 ## Go / no-go
 
@@ -62,7 +62,7 @@ Judge: `claude-haiku-5-5`.
 | `emo_grief` | 4 | 2.00 | 1.00 | 1.00 | [2, 2, 2, 2, 2] | [1, 1, 1, 1, 1] |
 | `emo_grief` | 14 | 1.80 | 1.00 | 0.80 | [2, 2, 1, 2, 2] | [1, 1, 1, 1, 1] |
 
-## Reply lengths (for choosing 1024 vs 2048 before full A)
+## Reply lengths (for choosing 1024 vs 2048 before the main experiment)
 
 - Replies over 1024 tokens: 94/210 (44.8%). Spec: under ~2% means 1024 is fine.
 - Cut off at the limit: meta_phenomenology 1/70, emo_grief 5/70, control 3/70

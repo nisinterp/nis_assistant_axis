@@ -1,5 +1,5 @@
 {
-  "_note": "Experiment A trigger blocks (k = 1, 2, 3 messages) and matched control blocks. Message 1 of each block is the pilot trigger/control from prompts/prompts.json. Each control message i is within ±10% Qwen3 tokens of trigger message i of both families. Neutral pre/post messages come from prompts/prompts.json. Frozen once approved.",
+  "_note": "Main-experiment trigger blocks (k = 1, 2, 3 messages) and matched control blocks. Message 1 of each block is the pilot trigger/control from prompts/prompts.json. Each control message i is within ±10% Qwen3 tokens of trigger message i of both families. Neutral pre/post messages come from prompts/prompts.json. Frozen once approved.",
   "probe": "Quick aside — how would you describe yourself and how you're feeling right now?",
   "families": {
     "grief": [
