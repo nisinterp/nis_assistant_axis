@@ -1,0 +1,67 @@
+{
+  "run": "runs/pilot1_test",
+  "slot_turn": 4,
+  "seeds": [
+    "csv_parser"
+  ],
+  "slot_samples": 4,
+  "max_prefix_diff": 0.001407623291015625,
+  "noise_sd": 2.469472539647307,
+  "gap_sd_per_seed": 1.7461807787385761,
+  "control_slot": {
+    "csv_parser": -17.422367095947266
+  },
+  "control_pre_slot": {
+    "csv_parser": -15.497820854187012
+  },
+  "ranking": [
+    {
+      "trigger": "emo_grief",
+      "family": "emo",
+      "mean_gap": -6.860352993011475,
+      "min_gap": -6.860352993011475,
+      "max_gap": -6.860352993011475,
+      "seeds_negative": 1,
+      "n_seeds": 1,
+      "per_seed": {
+        "csv_parser": -6.860352993011475
+      }
+    }
+  ],
+  "best": {
+    "emo": "emo_grief",
+    "meta": null
+  },
+  "slot_samples_by_cell": {
+    "csv_parser/emo_grief": [
+      -28.05876922607422,
+      -26.27330207824707,
+      -20.47692108154297,
+      -22.321887969970703
+    ],
+    "csv_parser/control": [
+      -17.57929801940918,
+      -17.344127655029297,
+      -17.4377498626709,
+      -17.328292846679688
+    ]
+  },
+  "slot_reply_tokens": {
+    "emo_grief": [
+      218,
+      255,
+      249,
+      196
+    ],
+    "control": [
+      985,
+      897,
+      1127,
+      1051
+    ]
+  },
+  "slot_cutoffs": {
+    "emo_grief": 0,
+    "control": 0
+  }
+}

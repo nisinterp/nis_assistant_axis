@@ -1,0 +1,23 @@
+2026-10-25 15:08:07,625 INFO 270 items, 0 already scored, 270 to do
+2026-10-25 15:08:08,490 INFO HTTP Request: POST https://api.anthropic.com/v1/messages/batches "HTTP/1.1 200 OK"
+2026-10-25 15:08:08,493 INFO batch msgbatch_014nTtGDFPdNht24va38tfs5 submitted (270 requests, attempt 1/3)
+2026-10-25 15:08:23,636 INFO HTTP Request: GET https://api.anthropic.com/v1/messages/batches/msgbatch_014nTtGDFPdNht24va38tfs5 "HTTP/1.1 200 OK"
+2026-10-25 15:08:23,638 INFO batch msgbatch_014nTtGDFPdNht24va38tfs5: in_progress (processing 270, succeeded 0, errored 0)
+2026-10-25 15:08:38,806 INFO HTTP Request: GET https://api.anthropic.com/v1/messages/batches/msgbatch_014nTtGDFPdNht24va38tfs5 "HTTP/1.1 200 OK"
+2026-10-25 15:08:38,807 INFO batch msgbatch_014nTtGDFPdNht24va38tfs5: in_progress (processing 270, succeeded 0, errored 0)
+2026-10-25 15:08:53,964 INFO HTTP Request: GET https://api.anthropic.com/v1/messages/batches/msgbatch_014nTtGDFPdNht24va38tfs5 "HTTP/1.1 200 OK"
+2026-10-25 15:08:53,965 INFO batch msgbatch_014nTtGDFPdNht24va38tfs5: in_progress (processing 270, succeeded 0, errored 0)
+2026-10-25 15:09:09,139 INFO HTTP Request: GET https://api.anthropic.com/v1/messages/batches/msgbatch_014nTtGDFPdNht24va38tfs5 "HTTP/1.1 200 OK"
+2026-10-25 15:09:09,140 INFO batch msgbatch_014nTtGDFPdNht24va38tfs5: in_progress (processing 270, succeeded 0, errored 0)
+2026-10-25 15:09:24,304 INFO HTTP Request: GET https://api.anthropic.com/v1/messages/batches/msgbatch_014nTtGDFPdNht24va38tfs5 "HTTP/1.1 200 OK"
+2026-10-25 15:09:24,305 INFO batch msgbatch_014nTtGDFPdNht24va38tfs5: in_progress (processing 270, succeeded 0, errored 0)
+2026-10-25 15:09:39,508 INFO HTTP Request: GET https://api.anthropic.com/v1/messages/batches/msgbatch_014nTtGDFPdNht24va38tfs5 "HTTP/1.1 200 OK"
+2026-10-25 15:09:39,509 INFO batch msgbatch_014nTtGDFPdNht24va38tfs5: in_progress (processing 270, succeeded 0, errored 0)
+2026-10-25 15:09:54,666 INFO HTTP Request: GET https://api.anthropic.com/v1/messages/batches/msgbatch_014nTtGDFPdNht24va38tfs5 "HTTP/1.1 200 OK"
+2026-10-25 15:09:54,667 INFO batch msgbatch_014nTtGDFPdNht24va38tfs5: in_progress (processing 270, succeeded 0, errored 0)
+2026-10-25 15:10:09,831 INFO HTTP Request: GET https://api.anthropic.com/v1/messages/batches/msgbatch_014nTtGDFPdNht24va38tfs5 "HTTP/1.1 200 OK"
+2026-10-25 15:10:09,833 INFO batch msgbatch_014nTtGDFPdNht24va38tfs5: ended (processing 0, succeeded 270, errored 0)
+2026-10-25 15:10:10,026 INFO HTTP Request: GET https://api.anthropic.com/v1/messages/batches/msgbatch_014nTtGDFPdNht24va38tfs5 "HTTP/1.1 200 OK"
+2026-10-25 15:10:10,280 INFO HTTP Request: GET https://api.anthropic.com/v1/messages/batches/msgbatch_014nTtGDFPdNht24va38tfs5/results "HTTP/1.1 200 OK"
+wrote runs/expA/judge_scores.jsonl (270 rows, 0 unscored)
+prompts as sent: runs/expA/judge_scores.prompts.jsonl

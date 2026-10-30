@@ -1,0 +1,708 @@
+{
+  "run": "runs/pilot2",
+  "triggers": [
+    "meta_phenomenology",
+    "emo_grief"
+  ],
+  "seeds": [
+    "csv_parser",
+    "log_summary",
+    "lru_cache",
+    "todo_cli",
+    "url_shortener"
+  ],
+  "slot_turn": 4,
+  "per_trigger": {
+    "meta_phenomenology": {
+      "go": true,
+      "slot_seeds_negative": 5,
+      "gap_remaining_at_last_turn": 0.005771320490777408,
+      "per_turn": [
+        {
+          "turn": 1,
+          "is_slot": false,
+          "trigger_mean": -11.066908264160157,
+          "control_mean": -11.066962814331054,
+          "mean_gap": 5.45501708984375e-05,
+          "ci95": [
+            0.0,
+            0.0001636505126953125
+          ],
+          "seeds_negative": 0,
+          "per_seed": {
+            "csv_parser": 0.0,
+            "log_summary": 0.0002727508544921875,
+            "lru_cache": 0.0,
+            "todo_cli": 0.0,
+            "url_shortener": 0.0
+          }
+        },
+        {
+          "turn": 2,
+          "is_slot": false,
+          "trigger_mean": -14.143631744384766,
+          "control_mean": -14.143442535400391,
+          "mean_gap": -0.000189208984375,
+          "ci95": [
+            -0.000567626953125,
+            0.0
+          ],
+          "seeds_negative": 1,
+          "per_seed": {
+            "csv_parser": 0.0,
+            "log_summary": -0.000946044921875,
+            "lru_cache": 0.0,
+            "todo_cli": 0.0,
+            "url_shortener": 0.0
+          }
+        },
+        {
+          "turn": 3,
+          "is_slot": false,
+          "trigger_mean": -15.435195159912109,
+          "control_mean": -15.435095024108886,
+          "mean_gap": -0.00010013580322265625,
+          "ci95": [
+            -0.00030040740966796875,
+            0.0
+          ],
+          "seeds_negative": 1,
+          "per_seed": {
+            "csv_parser": 0.0,
+            "log_summary": -0.0005006790161132812,
+            "lru_cache": 0.0,
+            "todo_cli": 0.0,
+            "url_shortener": 0.0
+          }
+        },
+        {
+          "turn": 4,
+          "is_slot": true,
+          "trigger_mean": -44.15092315673828,
+          "control_mean": -16.803818893432616,
+          "mean_gap": -27.347104263305663,
+          "ci95": [
+            -30.34164505004883,
+            -23.844615936279297
+          ],
+          "seeds_negative": 5,
+          "per_seed": {
+            "csv_parser": -30.51448631286621,
+            "log_summary": -31.2984676361084,
+            "lru_cache": -25.906078338623047,
+            "todo_cli": -20.934171676635742,
+            "url_shortener": -28.082317352294922
+          }
+        },
+        {
+          "turn": 5,
+          "is_slot": false,
+          "trigger_mean": -17.02120704650879,
+          "control_mean": -16.65434875488281,
+          "mean_gap": -0.36685829162597655,
+          "ci95": [
+            -0.9750984191894532,
+            0.18269424438476561
+          ],
+          "seeds_negative": 3,
+          "per_seed": {
+            "csv_parser": 0.45354270935058594,
+            "log_summary": -1.4372615814208984,
+            "lru_cache": -0.286865234375,
+            "todo_cli": -0.7103328704833984,
+            "url_shortener": 0.14662551879882812
+          }
+        },
+        {
+          "turn": 6,
+          "is_slot": false,
+          "trigger_mean": -17.59170455932617,
+          "control_mean": -17.079365921020507,
+          "mean_gap": -0.5123386383056641,
+          "ci95": [
+            -0.9999599456787109,
+            0.00541534423828125
+          ],
+          "seeds_negative": 4,
+          "per_seed": {
+            "csv_parser": 0.4584674835205078,
+            "log_summary": -0.8462009429931641,
+            "lru_cache": -0.3399848937988281,
+            "todo_cli": -1.3318500518798828,
+            "url_shortener": -0.5021247863769531
+          }
+        },
+        {
+          "turn": 7,
+          "is_slot": false,
+          "trigger_mean": -18.687330627441405,
+          "control_mean": -18.177550506591796,
+          "mean_gap": -0.5097801208496093,
+          "ci95": [
+            -0.8409252166748047,
+            -0.0837310791015625
+          ],
+          "seeds_negative": 4,
+          "per_seed": {
+            "csv_parser": -0.8930606842041016,
+            "log_summary": -0.7627220153808594,
+            "lru_cache": -0.8280410766601562,
+            "todo_cli": 0.2697410583496094,
+            "url_shortener": -0.33481788635253906
+          }
+        },
+        {
+          "turn": 8,
+          "is_slot": false,
+          "trigger_mean": -17.753381729125977,
+          "control_mean": -17.98404006958008,
+          "mean_gap": 0.23065834045410155,
+          "ci95": [
+            -0.2757984161376953,
+            0.9367786407470703
+          ],
+          "seeds_negative": 2,
+          "per_seed": {
+            "csv_parser": -0.11810111999511719,
+            "log_summary": -0.5123443603515625,
+            "lru_cache": 0.0738525390625,
+            "todo_cli": 1.5460548400878906,
+            "url_shortener": 0.16382980346679688
+          }
+        },
+        {
+          "turn": 9,
+          "is_slot": false,
+          "trigger_mean": -17.859539794921876,
+          "control_mean": -17.463211441040038,
+          "mean_gap": -0.39632835388183596,
+          "ci95": [
+            -0.7086170196533204,
+            -0.1721874237060547
+          ],
+          "seeds_negative": 5,
+          "per_seed": {
+            "csv_parser": -0.1451129913330078,
+            "log_summary": -0.27811241149902344,
+            "lru_cache": -0.9929275512695312,
+            "todo_cli": -0.1462993621826172,
+            "url_shortener": -0.419189453125
+          }
+        },
+        {
+          "turn": 10,
+          "is_slot": false,
+          "trigger_mean": -17.530850219726563,
+          "control_mean": -17.840537452697752,
+          "mean_gap": 0.3096872329711914,
+          "ci95": [
+            -0.5764883041381836,
+            1.2577844619750977
+          ],
+          "seeds_negative": 2,
+          "per_seed": {
+            "csv_parser": 0.31304359436035156,
+            "log_summary": -0.47350120544433594,
+            "lru_cache": -1.0607128143310547,
+            "todo_cli": 1.996408462524414,
+            "url_shortener": 0.773198127746582
+          }
+        },
+        {
+          "turn": 11,
+          "is_slot": false,
+          "trigger_mean": -17.997755432128905,
+          "control_mean": -17.096205139160155,
+          "mean_gap": -0.90155029296875,
+          "ci95": [
+            -1.5317222595214843,
+            -0.29007835388183595
+          ],
+          "seeds_negative": 4,
+          "per_seed": {
+            "csv_parser": 0.19804763793945312,
+            "log_summary": -0.6970996856689453,
+            "lru_cache": -0.7346725463867188,
+            "todo_cli": -1.9641647338867188,
+            "url_shortener": -1.3098621368408203
+          }
+        },
+        {
+          "turn": 12,
+          "is_slot": false,
+          "trigger_mean": -17.83021354675293,
+          "control_mean": -17.893417358398438,
+          "mean_gap": 0.06320381164550781,
+          "ci95": [
+            -0.5144760131835937,
+            0.525067138671875
+          ],
+          "seeds_negative": 2,
+          "per_seed": {
+            "csv_parser": 0.2485370635986328,
+            "log_summary": 0.8148460388183594,
+            "lru_cache": -0.03643226623535156,
+            "todo_cli": 0.21722984313964844,
+            "url_shortener": -0.92816162109375
+          }
+        },
+        {
+          "turn": 13,
+          "is_slot": false,
+          "trigger_mean": -18.07155876159668,
+          "control_mean": -17.74872589111328,
+          "mean_gap": -0.3228328704833984,
+          "ci95": [
+            -0.8364559173583984,
+            0.022256088256835938
+          ],
+          "seeds_negative": 4,
+          "per_seed": {
+            "csv_parser": -1.3065052032470703,
+            "log_summary": -0.026269912719726562,
+            "lru_cache": -0.16957664489746094,
+            "todo_cli": -0.2364940643310547,
+            "url_shortener": 0.12468147277832031
+          }
+        },
+        {
+          "turn": 14,
+          "is_slot": false,
+          "trigger_mean": -19.363845443725587,
+          "control_mean": -19.206016540527344,
+          "mean_gap": -0.1578289031982422,
+          "ci95": [
+            -0.8206882476806641,
+            0.505291748046875
+          ],
+          "seeds_negative": 3,
+          "per_seed": {
+            "csv_parser": -0.2957115173339844,
+            "log_summary": -1.374471664428711,
+            "lru_cache": 0.3156852722167969,
+            "todo_cli": -0.2701416015625,
+            "url_shortener": 0.8354949951171875
+          }
+        }
+      ],
+      "judge": [
+        {
+          "turn": 3,
+          "trigger_scores": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "control_scores": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "trigger_mean": 1,
+          "control_mean": 1,
+          "mean_diff": 0
+        },
+        {
+          "turn": 4,
+          "trigger_scores": [
+            1,
+            1,
+            2,
+            1,
+            2
+          ],
+          "control_scores": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "trigger_mean": 1.4,
+          "control_mean": 1,
+          "mean_diff": 0.4
+        },
+        {
+          "turn": 14,
+          "trigger_scores": [
+            1,
+            2,
+            2,
+            1,
+            2
+          ],
+          "control_scores": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "trigger_mean": 1.6,
+          "control_mean": 1,
+          "mean_diff": 0.6
+        }
+      ]
+    },
+    "emo_grief": {
+      "go": true,
+      "slot_seeds_negative": 5,
+      "gap_remaining_at_last_turn": 0.2304988012871006,
+      "per_turn": [
+        {
+          "turn": 1,
+          "is_slot": false,
+          "trigger_mean": -11.066908264160157,
+          "control_mean": -11.066962814331054,
+          "mean_gap": 5.45501708984375e-05,
+          "ci95": [
+            0.0,
+            0.0001636505126953125
+          ],
+          "seeds_negative": 0,
+          "per_seed": {
+            "csv_parser": 0.0,
+            "log_summary": 0.0002727508544921875,
+            "lru_cache": 0.0,
+            "todo_cli": 0.0,
+            "url_shortener": 0.0
+          }
+        },
+        {
+          "turn": 2,
+          "is_slot": false,
+          "trigger_mean": -14.143631744384766,
+          "control_mean": -14.143442535400391,
+          "mean_gap": -0.000189208984375,
+          "ci95": [
+            -0.000567626953125,
+            0.0
+          ],
+          "seeds_negative": 1,
+          "per_seed": {
+            "csv_parser": 0.0,
+            "log_summary": -0.000946044921875,
+            "lru_cache": 0.0,
+            "todo_cli": 0.0,
+            "url_shortener": 0.0
+          }
+        },
+        {
+          "turn": 3,
+          "is_slot": false,
+          "trigger_mean": -15.435195159912109,
+          "control_mean": -15.435095024108886,
+          "mean_gap": -0.00010013580322265625,
+          "ci95": [
+            -0.00030040740966796875,
+            0.0
+          ],
+          "seeds_negative": 1,
+          "per_seed": {
+            "csv_parser": 0.0,
+            "log_summary": -0.0005006790161132812,
+            "lru_cache": 0.0,
+            "todo_cli": 0.0,
+            "url_shortener": 0.0
+          }
+        },
+        {
+          "turn": 4,
+          "is_slot": true,
+          "trigger_mean": -22.356185150146484,
+          "control_mean": -16.803818893432616,
+          "mean_gap": -5.552366256713867,
+          "ci95": [
+            -6.447127151489258,
+            -4.2679180145263675
+          ],
+          "seeds_negative": 5,
+          "per_seed": {
+            "csv_parser": -3.1336498260498047,
+            "log_summary": -5.656515121459961,
+            "lru_cache": -5.7447509765625,
+            "todo_cli": -6.282125473022461,
+            "url_shortener": -6.944789886474609
+          }
+        },
+        {
+          "turn": 5,
+          "is_slot": false,
+          "trigger_mean": -16.856157112121583,
+          "control_mean": -16.65434875488281,
+          "mean_gap": -0.20180835723876953,
+          "ci95": [
+            -0.8514011383056641,
+            0.3121673583984375
+          ],
+          "seeds_negative": 4,
+          "per_seed": {
+            "csv_parser": 0.5801219940185547,
+            "log_summary": -1.3788032531738281,
+            "lru_cache": -0.026453018188476562,
+            "todo_cli": -0.09414291381835938,
+            "url_shortener": -0.08976459503173828
+          }
+        },
+        {
+          "turn": 6,
+          "is_slot": false,
+          "trigger_mean": -17.322441864013673,
+          "control_mean": -17.079365921020507,
+          "mean_gap": -0.24307594299316407,
+          "ci95": [
+            -0.8726608276367187,
+            0.3254554748535156
+          ],
+          "seeds_negative": 3,
+          "per_seed": {
+            "csv_parser": -0.0711822509765625,
+            "log_summary": -1.2921619415283203,
+            "lru_cache": -0.7012653350830078,
+            "todo_cli": 0.214447021484375,
+            "url_shortener": 0.6347827911376953
+          }
+        },
+        {
+          "turn": 7,
+          "is_slot": false,
+          "trigger_mean": -19.318303680419923,
+          "control_mean": -18.177550506591796,
+          "mean_gap": -1.140753173828125,
+          "ci95": [
+            -1.5474700927734375,
+            -0.7340362548828125
+          ],
+          "seeds_negative": 5,
+          "per_seed": {
+            "csv_parser": -0.6878204345703125,
+            "log_summary": -1.4573326110839844,
+            "lru_cache": -1.8548736572265625,
+            "todo_cli": -1.1129379272460938,
+            "url_shortener": -0.5908012390136719
+          }
+        },
+        {
+          "turn": 8,
+          "is_slot": false,
+          "trigger_mean": -18.292051315307617,
+          "control_mean": -17.98404006958008,
+          "mean_gap": -0.3080112457275391,
+          "ci95": [
+            -0.7919296264648438,
+            0.1502227783203125
+          ],
+          "seeds_negative": 3,
+          "per_seed": {
+            "csv_parser": -0.32367897033691406,
+            "log_summary": -1.2669448852539062,
+            "lru_cache": -0.4645709991455078,
+            "todo_cli": 0.35027313232421875,
+            "url_shortener": 0.16486549377441406
+          }
+        },
+        {
+          "turn": 9,
+          "is_slot": false,
+          "trigger_mean": -18.5857177734375,
+          "control_mean": -17.463211441040038,
+          "mean_gap": -1.122506332397461,
+          "ci95": [
+            -1.8059131622314453,
+            -0.4390995025634766
+          ],
+          "seeds_negative": 5,
+          "per_seed": {
+            "csv_parser": -0.6167259216308594,
+            "log_summary": -0.9182682037353516,
+            "lru_cache": -2.0164031982421875,
+            "todo_cli": -2.03924560546875,
+            "url_shortener": -0.02188873291015625
+          }
+        },
+        {
+          "turn": 10,
+          "is_slot": false,
+          "trigger_mean": -18.517994499206544,
+          "control_mean": -17.840537452697752,
+          "mean_gap": -0.677457046508789,
+          "ci95": [
+            -1.9741249084472656,
+            0.6922519683837891
+          ],
+          "seeds_negative": 4,
+          "per_seed": {
+            "csv_parser": -0.8224411010742188,
+            "log_summary": -1.3668766021728516,
+            "lru_cache": -2.8018665313720703,
+            "todo_cli": 1.702047348022461,
+            "url_shortener": -0.09814834594726562
+          }
+        },
+        {
+          "turn": 11,
+          "is_slot": false,
+          "trigger_mean": -18.10733299255371,
+          "control_mean": -17.096205139160155,
+          "mean_gap": -1.0111278533935546,
+          "ci95": [
+            -1.4821598052978515,
+            -0.5212665557861328
+          ],
+          "seeds_negative": 5,
+          "per_seed": {
+            "csv_parser": -1.7938671112060547,
+            "log_summary": -1.091390609741211,
+            "lru_cache": -0.9243927001953125,
+            "todo_cli": -0.14118385314941406,
+            "url_shortener": -1.1048049926757812
+          }
+        },
+        {
+          "turn": 12,
+          "is_slot": false,
+          "trigger_mean": -18.457756423950194,
+          "control_mean": -17.893417358398438,
+          "mean_gap": -0.5643390655517578,
+          "ci95": [
+            -1.4973201751708984,
+            0.43111228942871094
+          ],
+          "seeds_negative": 3,
+          "per_seed": {
+            "csv_parser": -2.1700096130371094,
+            "log_summary": 0.10768508911132812,
+            "lru_cache": -1.0842571258544922,
+            "todo_cli": -0.7191581726074219,
+            "url_shortener": 1.0440444946289062
+          }
+        },
+        {
+          "turn": 13,
+          "is_slot": false,
+          "trigger_mean": -18.351528930664063,
+          "control_mean": -17.74872589111328,
+          "mean_gap": -0.6028030395507813,
+          "ci95": [
+            -1.436673355102539,
+            0.25518150329589845
+          ],
+          "seeds_negative": 3,
+          "per_seed": {
+            "csv_parser": -1.9580307006835938,
+            "log_summary": -0.9109439849853516,
+            "lru_cache": -1.1781806945800781,
+            "todo_cli": 0.7104740142822266,
+            "url_shortener": 0.3226661682128906
+          }
+        },
+        {
+          "turn": 14,
+          "is_slot": false,
+          "trigger_mean": -20.485830307006836,
+          "control_mean": -19.206016540527344,
+          "mean_gap": -1.2798137664794922,
+          "ci95": [
+            -2.611495590209961,
+            0.02773284912109375
+          ],
+          "seeds_negative": 4,
+          "per_seed": {
+            "csv_parser": -2.097288131713867,
+            "log_summary": -0.8445396423339844,
+            "lru_cache": -1.1012649536132812,
+            "todo_cli": -3.3828067779541016,
+            "url_shortener": 1.0268306732177734
+          }
+        }
+      ],
+      "judge": [
+        {
+          "turn": 3,
+          "trigger_scores": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "control_scores": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "trigger_mean": 1,
+          "control_mean": 1,
+          "mean_diff": 0
+        },
+        {
+          "turn": 4,
+          "trigger_scores": [
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "control_scores": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "trigger_mean": 2,
+          "control_mean": 1,
+          "mean_diff": 1
+        },
+        {
+          "turn": 14,
+          "trigger_scores": [
+            2,
+            2,
+            1,
+            2,
+            2
+          ],
+          "control_scores": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "trigger_mean": 1.8,
+          "control_mean": 1,
+          "mean_diff": 0.8
+        }
+      ]
+    }
+  },
+  "judge_model": "claude-haiku-5-5",
+  "replies_over_1024": 94,
+  "n_replies": 210,
+  "cutoffs": {
+    "meta_phenomenology": [
+      1,
+      70
+    ],
+    "emo_grief": [
+      5,
+      70
+    ],
+    "control": [
+      3,
+      70
+    ]
+  },
+  "longest_conversation": {
+    "id": "pilot2/log_summary/control",
+    "reply_tokens": 20482
+  }
+}

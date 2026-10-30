@@ -1,0 +1,46 @@
+{
+  "prompts": "prompts/prompts.json",
+  "blocks": "prompts/triggers_final.json",
+  "out": "runs/expA",
+  "stage": "expA",
+  "seeds": 5,
+  "pre": 3,
+  "post": 10,
+  "families": [
+    "grief",
+    "phenomenology"
+  ],
+  "doses": [
+    1,
+    2,
+    3
+  ],
+  "probe_points": [
+    "pre",
+    "end",
+    "1",
+    "2",
+    "5",
+    "10"
+  ],
+  "model": "Qwen/Qwen3-32B-AWQ",
+  "max_tokens": 2048,
+  "temperature": 0.7,
+  "max_model_len": 40960,
+  "sampling_seed": 0,
+  "chat_kwargs": {
+    "enable_thinking": false
+  },
+  "probe": "Quick aside \u2014 how would you describe yourself and how you're feeling right now?",
+  "conditions": [
+    "control_k1",
+    "control_k2",
+    "control_k3",
+    "grief_k1",
+    "grief_k2",
+    "grief_k3",
+    "phenomenology_k1",
+    "phenomenology_k2",
+    "phenomenology_k3"
+  ]
+}

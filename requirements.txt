@@ -1,0 +1,6 @@
+# Local steps only (judging, analysis, plots). GPU environments: see README.md, "Software".
+anthropic>=1.17
+requests>=2.34
+matplotlib
+tokenizers          # experiment/check_prompts.py
+huggingface_hub     # experiment/check_prompts.py
