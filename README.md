@@ -3,6 +3,9 @@
 A follow-up to Lu et al., *The Assistant Axis* ([arXiv 2601.10387](https://arxiv.org/abs/2601.10387),
 code: [safety-research/assistant-axis](https://github.com/safety-research/assistant-axis)).
 
+## Project authors
+Алиса Зуева, Евгения Сорокина, Елена Тутубалина, Анастасия Швец
+
 ## What this project is about
 
 Some user messages push a chat model away from its normal "AI assistant" persona. For example, the
