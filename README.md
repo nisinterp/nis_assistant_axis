@@ -47,7 +47,7 @@ Full numbers: [`results/main_experiment/report.md`](results/main_experiment/repo
 ```
 .
 ├── README.md                  this file
-├── requirements.txt           packages for the local (no-GPU) steps: judging, analysis, plots
+├── requirements.txt           packages for the local (no-GPU) steps: judging, analysis notebooks
 ├── docs/
 │   └── spec.md                full design: question, terms, model, judge, all stages, cost, decisions
 ├── prompts/                   all user messages, frozen before the runs
@@ -59,7 +59,7 @@ Full numbers: [`results/main_experiment/report.md`](results/main_experiment/repo
 │   ├── judge.py               score probe replies 0-3; backends: OpenRouter (debug) / Anthropic Message Batches
 │   ├── openrouter.py          minimal OpenRouter client with rate-limit retries
 │   ├── rubric.txt             the 0-3 judge prompt
-│   ├── compare.py             your hand scores vs. the judge's, agreement report (pilot 2)
+│   ├── compare.py             your hand scores vs. the judge's, agreement report (used by results/pilot2.ipynb)
 │   └── tests/test_judge.py    unit tests (no network)
 │
 ├── experiment/                shared pipeline + the main experiment
@@ -68,18 +68,19 @@ Full numbers: [`results/main_experiment/report.md`](results/main_experiment/repo
 │   ├── project.py             project every reply (and probe reply) onto the Assistant Axis
 │   ├── compat.py              patches so the paper repo + AWQ model load under transformers 5 / CUDA 13
 │   ├── blind.py               replace probe ids with random ones before judging / hand scoring
-│   ├── analyze.py             Main-experiment analysis -> report.md, results.json
-│   ├── plot.py                Main-experiment figures -> recovery.png, probes.png, judge.png
 │   ├── export_transcripts.py  conversations as readable Markdown
 │   ├── check_prompts.py       validate a prompts file (counts, duplicates, ±10% control length)
 │   ├── run_main.sh            main experiment end to end on the GPU instance
 │   └── README.md              main experiment step by step
 │
 ├── pilots/                    pilot experiments
-│   ├── pilot1/                stage 1: which trigger causes the most drift? (TRIGGERS.md, run.sh, analyze.py, plot.py)
-│   └── pilot2/                stage 2: does the drift fade over 10 coding turns? (README.md, run.sh, analyze.py, plot.py)
+│   ├── pilot1/                stage 1: which trigger causes the most drift? (TRIGGERS.md, run.sh, run_test.sh)
+│   └── pilot2/                stage 2: does the drift fade over 10 coding turns? (README.md, run.sh)
 │
-└── results/                   all outputs, grouped like the code
+└── results/                   all outputs, and the notebooks that analyze them
+    ├── pilot1.ipynb           pilot 1 (and its smoke test): trigger ranking, figure, report
+    ├── pilot2.ipynb           pilot 2: go / no-go, recovery, judge scores, judge check, figures, report
+    ├── main_experiment.ipynb  main experiment: all tables, figures and the report
     ├── pilots/
     │   ├── pilot1_test/       1-seed smoke test of pilot 1
     │   ├── pilot1/            pilot 1: report.md, projection_by_turn.png, transcripts/
@@ -130,7 +131,14 @@ first (`supervisorctl stop vllm`) so the GPU is free.
 ## How to run each experiment
 
 Every GPU script writes into `results/...`. Copy that folder back to your machine, then run the
-local steps. All analysis scripts use only the standard library; the plot scripts need matplotlib.
+local steps. All analysis and figures are in the Jupyter notebooks in `results/` (one per stage):
+open one and run all cells. Each notebook shows its tables and figures inline and also writes
+`report.md`, `results.json` and the `.png` figures into its run folder. Paths in the notebooks are
+relative to `results/`, so start Jupyter from the repo (`jupyter lab`) or run a notebook headless:
+
+```bash
+jupyter nbconvert --to notebook --execute --inplace results/main_experiment.ipynb
+```
 
 ### Pilot 1: find a trigger that works
 
@@ -139,8 +147,8 @@ the slot turn. No probes. Trigger texts and sources: [`pilots/pilot1/TRIGGERS.md
 
 ```bash
 bash pilots/pilot1/run_test.sh                         # GPU, optional 1-seed smoke test
-bash pilots/pilot1/run.sh                              # GPU, ~5 min: generate + project + analyze
-python pilots/pilot1/plot.py results/pilots/pilot1     # local: projection_by_turn.png
+bash pilots/pilot1/run.sh                              # GPU, ~5 min: generate + project
+# local: run results/pilot1.ipynb -> report.md, results.json, projection_by_turn.png
 ```
 
 ### Pilot 2: does the drift fade?
@@ -154,8 +162,8 @@ bash pilots/pilot2/run.sh meta_phenomenology emo_grief       # GPU, ~16 min
 python experiment/blind.py results/pilots/pilot2              # local: blind the probes, make a 20-row sheet
 python judge/judge.py --judge-backend anthropic --model claude-haiku-5-5 \
     --in results/pilots/pilot2/judge_in.jsonl --out results/pilots/pilot2/judge_scores.jsonl
-python pilots/pilot2/analyze.py results/pilots/pilot2         # go / no-go + judge scores
-python pilots/pilot2/plot.py results/pilots/pilot2            # projection_by_turn.png, recovery.png
+# hand-score human_scores.csv, then run results/pilot2.ipynb: go / no-go, judge scores,
+# judge_check.md, projection_by_turn.png, recovery.png
 ```
 
 ### Main experiment: recovery after k trigger turns
@@ -166,23 +174,23 @@ turns. Probes are asked before the block, at its end, and 1, 2, 5 and 10 turns a
 probes). Details: [`experiment/README.md`](experiment/README.md).
 
 ```bash
-bash experiment/run_main.sh                                   # GPU, ~30-35 min: generate + project + analyze
-python experiment/plot.py results/main_experiment         # local: recovery.png, probes.png
+bash experiment/run_main.sh                                   # GPU, ~30-35 min: generate + project
 python experiment/blind.py results/main_experiment --sheet-n 0
 python judge/judge.py --judge-backend anthropic --model claude-haiku-5-5 \
     --in results/main_experiment/judge_in.jsonl --out results/main_experiment/judge_scores.jsonl
-python experiment/analyze.py results/main_experiment      # final report.md with judge scores
-python experiment/plot.py results/main_experiment         # adds judge.png
+# local: run results/main_experiment.ipynb -> report.md, results.json, recovery.png, probes.png, judge.png
 python experiment/export_transcripts.py results/main_experiment --probes   # optional, readable transcripts
 ```
 
 ## Where the results are
 
-| Stage | Read first | Figures |
-|---|---|---|
-| Pilot 1 | `results/pilots/pilot1/report.md` | `projection_by_turn.png` |
-| Pilot 2 | `results/pilots/pilot2/report.md`, `judge_check.md` | `projection_by_turn.png`, `recovery.png` |
-| Main experiment | `results/main_experiment/report.md` | `recovery.png`, `probes.png`, `judge.png` |
+| Stage | Notebook (analysis + figures) | Report | Figures |
+|---|---|---|---|
+| Pilot 1 | [`results/pilot1.ipynb`](results/pilot1.ipynb) | `results/pilots/pilot1/report.md` | `projection_by_turn.png` |
+| Pilot 2 | [`results/pilot2.ipynb`](results/pilot2.ipynb) | `results/pilots/pilot2/report.md`, `judge_check.md` | `projection_by_turn.png`, `recovery.png` |
+| Main experiment | [`results/main_experiment.ipynb`](results/main_experiment.ipynb) | `results/main_experiment/report.md` | `recovery.png`, `probes.png`, `judge.png` |
+
+The notebooks are saved with their outputs, so they can be read on GitHub without running them.
 
 ### Files in a run folder
 
@@ -196,7 +204,7 @@ python experiment/export_transcripts.py results/main_experiment --probes   # opt
 | `judge_in.jsonl`, `key.json` | blinded probe replies sent to the judge, and the key back to the real probe ids |
 | `judge_scores.jsonl`, `*.prompts.jsonl` | judge scores with one-sentence reasons, and the prompts exactly as sent |
 | `human_scores.csv` | hand scores used to check the judge |
-| `report.md`, `results.json` | the analysis, readable and machine-readable |
+| `report.md`, `results.json` | the analysis, readable and machine-readable (written by the notebook) |
 | `transcripts/` | conversations as Markdown with per-turn projections |
 | `run.log` | the GPU log of the run |
 

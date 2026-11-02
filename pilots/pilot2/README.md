@@ -10,7 +10,7 @@ All messages come from `prompts/prompts.json`: the first 5 seeds, `pre[0:3]`, th
    ```
    bash pilots/pilot2/run.sh emo_grief
    ```
-   This generates the conversations and probes, projects every turn, and writes `results/pilots/pilot2/report.md` with the go / no-go verdict (no judge scores yet). After this the GPU can be turned off.
+   This generates the conversations and probes and projects every turn. Copy `results/pilots/pilot2/` back; after this the GPU can be turned off. Running `results/pilot2.ipynb` now already gives the go / no-go verdict (no judge scores yet).
 
 2. **Blind** (local). Replaces probe ids with random ones so neither the judge nor you can see the condition or turn:
    ```
@@ -26,17 +26,11 @@ All messages come from `prompts/prompts.json`: the first 5 seeds, `pre[0:3]`, th
        --in results/pilots/pilot2/judge_in.jsonl --out results/pilots/pilot2/judge_scores.jsonl
    ```
 
-5. **Judge check on real replies.** Spec: Haiku must be within 1 point of you on ≥ 18/20; otherwise use Sonnet for the main experiment.
-   ```
-   .venv/bin/python judge/compare.py --judge results/pilots/pilot2/judge_scores.jsonl \
-       --human results/pilots/pilot2/human_scores.csv --replies results/pilots/pilot2/judge_in.jsonl --levels "" \
-       --min-exact 0 --min-within1 0.9 --title "Pilot 2 judge check" --out results/pilots/pilot2/judge_check.md
-   ```
-
-6. **Final report** with judge scores added:
-   ```
-   python pilots/pilot2/analyze.py results/pilots/pilot2
-   ```
+5. **Analysis notebook**: open `results/pilot2.ipynb` and run all cells. It writes the final
+   `report.md` and `results.json` (go / no-go, gap per turn, judge scores, reply lengths), the
+   judge check `judge_check.md` (spec: Haiku must be within 1 point of you on ≥ 18/20; otherwise use
+   Sonnet for the main experiment; it calls `judge/compare.py`), and the figures
+   `projection_by_turn.png` and `recovery.png`.
 
 ## Go / no-go (spec)
 

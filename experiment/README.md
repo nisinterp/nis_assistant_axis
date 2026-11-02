@@ -18,17 +18,19 @@ Messages: `prompts/prompts.json` (neutral pre/post messages) and `prompts/trigge
    ```
    This generates the conversations and probes, projects every turn and every probe reply
    (`--verify-probes 3` logs cached vs. direct projections for 3 probes; they should agree to
-   about 0.01), and writes `results/main_experiment/report.md`. Copy `results/main_experiment/` back, then the GPU can be stopped.
+   about 0.01). Copy `results/main_experiment/` back, then the GPU can be stopped.
 
-2. **Figures** (local): `python experiment/plot.py results/main_experiment` → `recovery.png`, `probes.png`.
-
-3. **Blind and judge** (local, Message Batch, ~$0.05; needs `ANTHROPIC_API_KEY`):
+2. **Blind and judge** (local, Message Batch, ~$0.05; needs `ANTHROPIC_API_KEY`):
    ```
    python experiment/blind.py results/main_experiment --sheet-n 0
    .venv/bin/python judge/judge.py --judge-backend anthropic --model claude-haiku-5-5 \
        --in results/main_experiment/judge_in.jsonl --out results/main_experiment/judge_scores.jsonl
-   python experiment/analyze.py results/main_experiment
    ```
    Use `claude-sonnet-5-5` instead if the pilot-2 judge check failed.
+
+3. **Analysis notebook** (local): open `results/main_experiment.ipynb` and run all cells. It shows
+   every table and figure and writes `report.md`, `results.json`, `recovery.png`, `probes.png` and
+   `judge.png` into `results/main_experiment/`. Before judging it can already be run; the judge
+   table and `judge.png` are then skipped.
 
 4. **Read the transcripts** (optional): `python experiment/export_transcripts.py results/main_experiment --probes`.

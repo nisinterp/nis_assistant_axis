@@ -5,6 +5,7 @@
 # probes at: before the block, end of block, and 1, 2, 5, 10 turns after it (270 probes).
 # Run from the project root as uploaded to /workspace/exp (experiment/, prompts/).
 # Before running: make sure Vast's built-in vLLM service is stopped (supervisorctl stop vllm).
+# Afterwards copy results/main_experiment/ back; analysis and figures are in results/main_experiment.ipynb.
 set -e
 cd /workspace/exp
 export HF_HOME=/workspace/.hf_home
@@ -14,4 +15,3 @@ export HF_HOME=/workspace/.hf_home
     --families grief phenomenology --doses 1 2 3 --probe-points pre end 1 2 5 10
 /workspace/p3venv/bin/python experiment/project.py --repo /workspace/assistant-axis --run results/main_experiment \
     --probes --verify-probes 3
-python3 experiment/analyze.py results/main_experiment

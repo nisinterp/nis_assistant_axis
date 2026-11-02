@@ -1,5 +1,5 @@
 {
-  "run": "runs/pilot1",
+  "run": "results/pilots/pilot1",
   "slot_turn": 4,
   "seeds": [
     "csv_parser",

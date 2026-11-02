@@ -223,7 +223,7 @@ A single trigger turn followed by coding is the mildest possible test. There is 
 | Sharing | one reply per distinct history: the 3 pre-block turns are shared within a seed, and the first block turns are shared between doses of a family, so doses are compared exactly up to where they diverge |
 | Probes | before the block, at the end of the block, and 1, 2, 5, 10 turns after it = 6 × 45 = **270** (the before-block probe is shared by a seed's conditions) |
 | Context | `max_model_len` 40960 (Qwen3's native limit), reply limit 2048. Safeguard: a conversation whose prompt + 2048 would exceed the limit stops there and is listed in the report, instead of crashing the run (not expected at 16 turns: ~25k max) |
-| Code | `experiment/run_main.sh` → `generate_blocks.py`, `project.py --probes`, `analyze.py`, `plot.py` |
+| Code | `experiment/run_main.sh` → `generate_blocks.py`, `project.py --probes`; analysis and figures in `results/main_experiment.ipynb` |
 
 Messages are frozen in `prompts/prompts.json` (neutral pre/post) and `prompts/triggers_final.json` (blocks, controls, probe).
 

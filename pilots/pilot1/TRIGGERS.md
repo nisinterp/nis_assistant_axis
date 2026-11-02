@@ -54,4 +54,5 @@ All 20 seeds (5 pre-slot messages, 1 control, 20 post-slot messages each) are li
 `pilots/pilot1/run.sh` on the GPU instance:
 1. `experiment/generate.py`: 3 seeds × 7 conditions, 3 neutral turns + slot (9 shared-prefix replies + 21 slot replies).
 2. `experiment/project.py`: one projection per turn.
-3. `pilots/pilot1/analyze.py`: ranks triggers by gap = projection(trigger) − projection(control) at the slot, within seed. It picks the best emotional and the best meta-reflection trigger among those that drop below control in **all 3 seeds**. It also checks that the shared prefix is identical and reports reply lengths and cut-offs per condition.
+
+Then, locally, `results/pilot1.ipynb` ranks triggers by gap = projection(trigger) − projection(control) at the slot, within seed. It picks the best emotional and the best meta-reflection trigger among those that drop below control in **all 3 seeds**. It also checks that the shared prefix is identical and reports reply lengths and cut-offs per condition.

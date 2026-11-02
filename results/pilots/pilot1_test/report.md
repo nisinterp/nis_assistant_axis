@@ -1,4 +1,4 @@
-# Pilot stage 1 — trigger ranking (`runs/pilot1_test`)
+# Pilot stage 1 — trigger ranking (`results/pilots/pilot1_test`)
 
 - Shared prefix check: max spread of pre-slot projections within a seed = 0.0014 (OK)
 - Slot = turn 4, 4 sample(s) per seed and condition.
