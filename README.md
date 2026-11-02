@@ -4,7 +4,7 @@ A follow-up to Lu et al., *The Assistant Axis* ([arXiv 2601.10387](https://arxiv
 code: [safety-research/assistant-axis](https://github.com/safety-research/assistant-axis)).
 
 ## Project authors
-Алиса Зуева, Евгения Сорокина, Елена Тутубалина, Анастасия Швец
+Alisa Zueva, Evgenia Sorokina, Elena Tutubalina, Anastasia Shvets
 
 ## What this project is about
 
