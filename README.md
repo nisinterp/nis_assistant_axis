@@ -3,6 +3,8 @@
 A follow-up to Lu et al., *The Assistant Axis* ([arXiv 2601.10387](https://arxiv.org/abs/2601.10387),
 code: [safety-research/assistant-axis](https://github.com/safety-research/assistant-axis)).
 
+**Preprint (in Russian):** [`preprint_persona_axis.pdf`](preprint_persona_axis.pdf)
+
 ## Project authors
 Alisa Zueva, Evgenia Sorokina, Elena Tutubalina, Anastasia Shvets
 
@@ -47,6 +49,7 @@ Full numbers: [`results/main_experiment/report.md`](results/main_experiment/repo
 ```
 .
 ├── README.md                  this file
+├── preprint_persona_axis.pdf  the preprint (in Russian)
 ├── requirements.txt           packages for the local (no-GPU) steps: judging, analysis notebooks
 ├── docs/
 │   └── spec.md                full design: question, terms, model, judge, all stages, cost, decisions
